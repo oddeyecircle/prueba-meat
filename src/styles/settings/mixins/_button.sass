@@ -1,0 +1,23 @@
+=button($backgroundColor, $color: getContrast($backgroundColor), $boxShadowColor: $backgroundColor, $borderColor: $backgroundColor, $hoverColor: $backgroundColor)
+    background-color: $backgroundColor
+    border: $jac-button-border-width solid $borderColor
+    @if $color
+        color: $color
+    @else
+        color: getContrast($backgroundColor)
+    &:hover
+        border-color: if($borderColor == true, $borderColor, $hoverColor)
+        background-color: $hoverColor
+    &:focus,
+    &:active
+        border-color: $boxShadowColor
+        background-color: darken($backgroundColor, 5%)
+        outline: none
+        box-shadow: 0 0 0 1px rgba($boxShadowColor, .6)
+    &:active
+        background-color: darken($backgroundColor, 10%)
+    &:disabled
+        &:hover
+            border-color: transparent
+            color: $meat-disabled-button-text-color
+            background-color: $meat-disabled-button-background-color

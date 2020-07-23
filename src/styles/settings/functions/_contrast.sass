@@ -1,0 +1,30 @@
+// @function pow($base, $exponent)
+//     $result: 1
+//     @for $_ from 1 through $exponent
+//         $result: $result * $base
+//     @return $result
+
+// @function lumin($r, $g, $b)
+//     @return (0.2126 * $r) + (0.7152 * $g) + (0.0722 * $b)
+
+// @function linearColor($color)
+//     $c: $color / 255
+//     @return if($c < 0.03928, $c / 12.92, pow(($c + 0.055) / 1.055, 2.4))
+
+// @function getContrast($color)
+//     $r: linearColor(red($color))
+//     $g: linearColor(green($color))
+//     $b: linearColor(blue($color))
+//     $lum: lumin($r, $g, $b)
+//     $C: (max(0, $lum) + 0.05) / (min(0, $lum) + 0.05)
+//     @return if($C >= 9, #434343, white)
+
+@function getContrast($color)
+    $brightness: round((red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000)
+    $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 578) + (blue(#ffffff) * 114) / 1000)
+    $color: null
+    @if abs($brightness) < ($light-color / 2)
+        $color: white
+    @else
+        $color: black
+    @return $color

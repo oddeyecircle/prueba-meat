@@ -1,0 +1,62 @@
+.card
+    border-radius: 10px
+    box-shadow: $meat-box-shadow
+    overflow: hidden
+    max-width: 100%
+    @include padding($jac-padding-3)
+
+.card-image
+    @include margin(-$jac-margin-3, -$jac-margin-3, 0, -$jac-margin-3)
+
+.card-title
+    @include font-size(18px)
+    @include margin-single(top, $jac-margin-3)
+    font-weight: $jac-weight-bold
+    transition: $meat-linear-transition
+
+.card-body
+    @include font-size(14px)
+    flex-grow: 1
+    @include margin-single(bottom, $jac-margin-1)
+
+.card-actions
+    transition: $meat-linear-transition
+    height: 0
+    a
+        transition: inherit
+        transform: translateY(100px)
+        color: $meat-gold
+        @include font-size(15px)
+        font-weight: bold
+
+.article-card
+    display: flex
+    flex-direction: column
+    height: 400px
+    position: absolute
+    @include margin(0, $jac-margin-2, $jac-margin-4)
+    &:hover
+        height: 424px
+        .card-actions
+            height: 24px
+            a
+                transform: translateY(0px)
+        .card-title
+            color: $meat-gold
+
+
+.card-fix
+    position: relative
+    height: 400px
+    @include margin-single(bottom, $jac-margin-4)
+
+@include media-breakpoint-down(sm)
+    .card-fix
+        height: 424px
+    .article-card
+        height: 424px
+        @include margin($jac-margin-2, $jac-margin-2, $jac-margin-4, 0)
+    .card-actions
+        height: initial
+        a
+            transform: none

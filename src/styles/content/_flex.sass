@@ -1,0 +1,40 @@
+$start-end-center: (start: flex-start, center: center, end: flex-end)
+
+.flex
+  display: flex
+  &--column
+    flex-direction: column
+  &--row
+    flex-direction: row
+  &--grow
+    flex-grow: 1
+  &--wrap
+    flex-wrap: wrap
+  &--no-wrap
+    flex-wrap: nowrap
+  &--wrap-reverse
+    flex-wrap: wrap-reverse
+  &--row-reverse
+    flex-direction: row-reverse
+  &--column-reverse
+    flex-direction: column-reverse
+
+@each $position, $value in $start-end-center
+  .flex
+    &--align-#{$position}
+      align-items: $value
+    &--justify-#{$position}
+      justify-content: $value
+  
+@each $breakpoint in map-keys($screen-breakpoints)
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints)
+  @include media-breakpoint-down($breakpoint, $screen-breakpoints)
+    .flex
+      &--wrap
+        flex-wrap: wrap
+      &--wrap-reverse-#{$infix}
+        flex-wrap: wrap-reverse
+      &--row-reverse-#{$infix}
+        flex-direction: row-reverse
+      &--column-reverse-#{$infix}
+        flex-direction: column-reverse

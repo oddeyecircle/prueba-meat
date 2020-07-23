@@ -1,0 +1,21 @@
+.button
+    border: none
+    border-radius: $jac-border-radius-small
+    font-weight: $jac-weight-bold
+    transition: background 120ms linear, color 120ms linear
+    align-self: flex-start
+    cursor: pointer
+    text-transform: uppercase
+    @include padding($meat-button-vertical-padding, $meat-button-horizontal-padding)
+    @include button(map-get($jac-grey, 300), $color: $black)
+    &:disabled
+        background-color: $meat-disabled-button-background-color
+        color: $meat-disabled-button-text-color
+        cursor: not-allowed
+        border-color: transparent
+        font-weight: bold
+    &.--rounded
+        border-radius: $jac-border-radius-large
+
+.button-contact
+    @include button($meat-button-background-color, #ffffff, $hoverColor: $meat-button-hover-background-color)

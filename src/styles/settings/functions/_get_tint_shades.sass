@@ -1,0 +1,11 @@
+@function get-tint($color)
+    @return mix($color, white, 70%)
+
+@function get-shade($color)
+    @return mix($color, map-get($jac-grey, 800), 80%)
+
+@function get-pastel($color)
+    @return mix($color, white, 25%)
+
+@function get-pale($color)
+    @return mix($color, white, 12%)

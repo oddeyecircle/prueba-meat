@@ -1,0 +1,5 @@
+=border($color, $position: all, $weight: thin, $style: solid)
+  @if $position == all
+    border: $weight $style $color
+  @else
+    border-#{$position}: $weight $style $color

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prueba Meat Cöde</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="dist/bundle.css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-absolute">
+            <div class="container">
+                <div class="navbar-start">
+                    <a href="/" class="navbar-brand"><img src="dist/images/logo.svg" /></a>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-links">
+                        <a class="navbar-link facebook">
+                            <img src="dist/images/facebook-icon.svg" />
+                        </a>
+                        <a class="navbar-link instagram">
+                            <img src="dist/images/instagram-icon.svg" />
+                        </a>
+                        <a class="navbar-link youtube">
+                            <img src="dist/images/youtube-icon.svg" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section class="intro-section">
+                <div class="intro-section-background">
+                    <img src="dist/images/e0af7d7a38fb07af4dc1750171294d49.jpg">
+                </div>
+                <div class="container">
+                    <h1 class="title intro-section-title">
+                        El secreto<br />de tu cocina.
+                    </h1>
+                </div>
+                <div class="intro-section-gradient"></div>
+            </section>
+            <section class="articles-section">
+                <h2 class="title section-title">
+                    Nuestros artículos
+                </h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="column--colspan-3-md">
+                            <div class="card filter-card">
+                                <ul class="filter-list" id="filter-list">
+                                    <li class="active">Todos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column--md article-list">
+                            <div class="row" id="article-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="contact-section">
+                <h2 class="title section-title">
+                    Contáctanos
+                </h2>
+                <div class="container">
+                    <form class="form">
+                        <div class="row">
+                            <div class="form-field column--colspan-6-md">
+                                <label class="form-field-label">Nombre</label>
+                                <input
+                                    type="text"
+                                    class="form-field-input"
+                                    autocomplete="name"
+                                    name="firstname"
+                                    placeholder="Ej: Andrés"
+                                    required
+                                />
+                            </div>
+                            <div class="form-field column--colspan-6-md">
+                                <label class="form-field-label">Apellido</label>
+                                <input
+                                    type="text"
+                                    class="form-field-input"
+                                    autocomplete="additional-name"
+                                    name="lastname"
+                                    placeholder="Ej: Tapia"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-field column--colspan-6-md">
+                                <label class="form-field-label">Mail</label>
+                                <input
+                                    type="email"
+                                    class="form-field-input"
+                                    autocomplete="email"
+                                    name="email"
+                                    placeholder="Ej: hola@mail.com"
+                                    required
+                                />
+                            </div>
+                            <div class="form-field column--colspan-6-md">
+                                <label class="form-field-label">Teléfono</label>
+                                <input
+                                    type="tel"
+                                    class="form-field-input"
+                                    autocomplete="tel"
+                                    name="phone"
+                                    placeholder="Ej: +56912345678"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="row form-field flex--justify-end">
+                            <button
+                                class="button button-contact --rounded"
+                                disabled
+                            >
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <script src="dist/bundle.js"></script>
+    </body>
+</html>

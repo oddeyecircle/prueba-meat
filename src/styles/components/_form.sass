@@ -1,0 +1,50 @@
+form,
+.form
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    &.disabled
+        .form-field-label
+            opacity: 0.5
+    &.row
+        .form-field
+            justify-content: flex-end
+            display: flex
+            flex-direction: column
+            @include padding-horizontal($jac-margin-base)
+
+.form-field
+    display: block
+    @include margin($jac-margin-2, 0)
+    @include padding(0, $jac-padding-2)
+    
+    &:focus-within
+        .form-field-label
+            color: $meat-label-focus-color
+        ::placeholder
+            color: $meat-dark
+    .form-field-input
+        &.invalid
+            border-color: $meat-red !important
+            color: $meat-red !important
+        appearance: none
+        width: 100%
+        border-radius: 0
+        @include border($meat-grey-light)
+        @include font-size(13px)
+        @include padding(12px, 22px, 12px 0)
+        transition: $meat-linear-transition
+        &:focus
+            outline: none
+            border-color: $meat-input-focus-color
+        &:disabled
+            opacity: 0.5
+    .form-field-label
+        @include font-size(14px)
+        font-weight: $jac-weight-bold
+        text-transform: uppercase
+        color: $meat-label-normal-color
+        transition: $meat-linear-transition
+    ::placeholder
+        color: $meat-label-normal-color
+        transition: $meat-linear-transition

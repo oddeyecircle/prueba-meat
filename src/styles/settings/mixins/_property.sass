@@ -1,0 +1,60 @@
+=property-horizontal($prop, $start, $end: $start)
+  @if $start == 0 and $end == 0
+    #{$prop}-left: $start
+    #{$prop}-right: $end
+  @else
+    #{$prop}-left: $start
+    #{$prop}-right: $end
+    @at-root
+      @supports ((margin-inline-start: 0) or (-webkit-margin-start: 0))
+        &
+          @if $start != null
+            #{$prop}-left: unset
+          @if $end != null
+            #{$prop}-right: unset
+          #{$prop}-inline-start: $start
+          #{$prop}-inline-end: $end
+
+=property($prop, $top, $end: $top, $bottom: $top, $start: $end)
+  @include property-horizontal($prop, $start, $end)
+  #{$prop}-top: $top
+  #{$prop}-bottom: $bottom
+
+=padding-horizontal($start, $end: $start)
+  @include property-horizontal(padding, $start, $end)
+
+=padding($top, $end: $top, $bottom: $top, $start: $end)
+  @include property(padding, $top, $end, $bottom, $start)
+
+=margin-horizontal($start, $end: $start)
+  @include property-horizontal(margin, $start, $end)
+
+=margin($top, $end: $top, $bottom: $top, $start: $end)
+  @include property(margin, $top, $end, $bottom, $start)
+
+=property-single($prop, $position, $value)
+  @if $value == 0
+    #{$prop}-#{$position}: $value
+  @else if $position == left or $position == right
+      #{$prop}-#{$position}: $value
+      @at-root
+        @supports ((margin-inline-start: 0)) or (-webkit-margin-start: 0)
+          &
+            @if $position != null and $position == left
+              #{$prop}-left: unset
+              -webkit-#{$prop}-start: $value
+              #{$prop}-inline-start: $value
+            @else if $position != null and $position == right
+              #{$prop}-right: unset
+              -webkit-#{$prop}-end: $value
+              #{$prop}-inline-end: $value
+  @else
+    #{$prop}-#{$position}: $value
+          
+=margin-single($position, $value)
+  @include property-single(margin, $position, $value)
+  
+
+=padding-single($position, $value)
+  @include property-single(padding, $position, $value)
+  

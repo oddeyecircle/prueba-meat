@@ -1,0 +1,73 @@
+%column
+  display: flex
+  flex-direction: column
+  flex-basis: 100%
+  flex-grow: 0
+  flex-shrink: 0
+
+.row
+  display: flex
+  flex-grow: 0
+  flex-shrink: 0
+  flex-basis: auto
+  width: 100%
+  flex-direction: row
+  flex-wrap: wrap
+
+.column
+  display: flex
+  flex-direction: column
+  flex: 1
+
+@for $i from 1 through 12
+  .column--colspan-#{$i}
+    display: flex
+    flex-direction: column
+    flex-basis: (100% / 12) * $i
+    flex-grow: 0
+    flex-shrink: 0
+  .column--push-#{$i}-start
+    @include margin-single(left, (100% / 12) * $i) 
+  .column--push-#{$i}-end
+    @include margin-single(right, (100% / 12) *$i)
+@each $breakpoint in map-keys($screen-breakpoints)
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints)
+  .column--#{$infix}
+    @extend %column
+  @for $i from 1 through 12
+    .column--colspan-#{$i}-#{$infix}
+      @extend %column
+  @include media-breakpoint-up($breakpoint, $screen-breakpoints)
+    .column--#{$infix}
+      display: flex
+      flex-direction: column
+      flex: 1
+    @for $i from 1 through 12
+      .column--colspan-#{$i}-#{$infix}
+        display: flex
+        flex-direction: column
+        flex-basis: (100% / 12) * $i
+        flex-shrink: 0
+        flex-grow: 0
+      .column--push-#{$i}-start-#{$infix}
+        @include margin-single(left, (100% / 12) * $i) 
+      .column--push-#{$i}-end-#{$infix}
+        @include margin-single(right, (100% / 12) *$i)
+    @media screen and (orientation: portrait)
+      .column--#{$infix}-portrait
+        display: flex
+        flex-direction: column
+        flex: 1
+      @for $i from 1 through 12
+        .column--colspan-#{$i}-portrait
+          display: flex
+          flex-direction: column
+          flex-basis: (100% / 12) * $i
+          flex-grow: 0
+          flex-shrink: 0
+        .column--colspan-#{$i}-#{$infix}-portrait
+          display: flex
+          flex-direction: column
+          flex-basis: (100% / 12) * $i
+          flex-shrink: 0
+          flex-grow: 0

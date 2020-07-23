@@ -1,0 +1,53 @@
+.article-list
+    display: block
+    position: relative
+
+.filter-list
+    list-style: none
+    padding: 0
+    li
+        cursor: pointer
+        height: 40px
+        display: flex
+        align-items: center
+        text-transform: uppercase
+        position: relative
+        &:hover
+            color: $meat-gold
+        &::after
+                content: ''
+                position: absolute
+                background-image: url('../img/arrow.svg')
+                background-size: 100%
+                width: 18px
+                height: 18px
+                right: -300px
+                top: 50%
+                transform: translateY(-50%)
+                transition: $meat-linear-transition
+        &:last-of-type
+            @include margin-single(bottom, 100px)
+        &.active
+            color: $meat-gold
+            font-weight: bold
+            &:hover
+                &::after
+                    right: -18px
+            &::after
+                right: 0
+            
+
+@include media-breakpoint-down(sm)
+    .article-list
+        overflow: hidden
+        .row
+            flex-wrap: nowrap
+            overflow-x: scroll
+            touch-action: pan-x
+            @include margin($jac-margin-1, 0)
+            > div
+                max-width: 90%
+    .filter-list
+        li
+            &:last-of-type
+                @include margin-single(bottom, 0)

@@ -1,0 +1,101 @@
+=navbar-children
+  .navbar-start,
+  .navbar-end,
+  .navbar-content
+    @content
+  
+.navbar
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  min-height: $jac-navbar-height
+  z-index: 100
+  @include padding(0, $jac-padding-4)
+
+.navbar-absolute
+  position: absolute
+  width: 100%
+  top: 0
+  left: 0
+
+.navbar-shrinkable
+  flex-wrap: wrap
+  @include navbar-children
+    flex-shrink: 1
+    flex-grow: 1
+    flex-basis: auto
+
+.navbar-start,
+.navbar-end,
+.navbar-content
+  flex: 1
+  display: flex
+
+.navbar-start
+  justify-content: flex-start
+
+.navbar-content
+  justify-content: center
+
+.navbar-end
+  justify-content: flex-end
+
+.navbar-links
+    display: flex
+    align-items: center
+    ul,
+    ol
+        margin: 0
+        padding: 0
+        display: inherit
+        align-items: center
+        li
+            list-style: none
+    .navbar-link
+        color: inherit
+        border-radius: $jac-border-radius-small
+        font-weight: $jac-weight-light
+        width: 62px
+        height: 62px
+        border-radius: 100%
+        white-space: nowrap
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        border: 3px solid
+        cursor: pointer
+        @include margin-horizontal($jac-margin-1)
+        transition: $meat-linear-transition
+        &:hover
+          transform: scale(1.1)
+        &.facebook
+          border-color: #009CD9
+        &.instagram
+          border-color: #B72C2C
+        &.youtube
+          border-color: #D8AD3D
+        @include padding($jac-padding-base, $jac-padding-1)
+
+@include media-breakpoint-down(md)
+  .navbar
+    @include padding(0, $jac-padding-1)
+  .navbar-brand
+    img
+      width: 60px
+  .navbar-links
+    .navbar-link
+      width: 40px
+      height: 40px
+        
+@each $breakpoint in map-keys($screen-breakpoints)
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints)
+  @include media-breakpoint-down($breakpoint, $screen-breakpoints)
+    .navbar-stacked-#{$infix}
+      flex-direction: column
+      @include navbar-children
+        overflow-x: auto
+        max-width: 100%
+        display: block
+        @include margin($jac-margin-1, 0)

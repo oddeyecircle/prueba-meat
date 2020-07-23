@@ -1,0 +1,9 @@
+@each $breakpoint in map-keys($screen-breakpoints)
+    $infix: breakpoint-infix($breakpoint, $screen-breakpoints)
+    @include media-breakpoint-between($breakpoint, breakpoint-next($breakpoint))
+        .container
+            width: map-get($container-sizes, $breakpoint)
+            max-width: 100%
+            margin: 0 auto
+            display: inherit
+            @include padding($jac-padding-2)
