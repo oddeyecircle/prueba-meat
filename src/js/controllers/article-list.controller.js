@@ -15,7 +15,7 @@ export const getArticleList = async () => {
 
 const filterArticleList = async filter => {
     if (filter === undefined) {
-        filter = ''
+        filter = "";
     }
     const response = await axios.get(`${url}/?filter=${filter}`);
     try {
@@ -23,7 +23,7 @@ const filterArticleList = async filter => {
             return response.data;
         }
     } catch (error) {
-        throw new Error()
+        throw new Error();
     }
 };
 
@@ -42,7 +42,7 @@ export const buildFilterList = (list, el) => {
 
 export const buildCardList = (list, el) => {
     const cardList = list;
-    el.innerHTML = '';
+    el.innerHTML = "";
     cardList.forEach(inList => {
         const template = `
         <div class="column--colspan-4-lg column--colspan-6-md" style="position:relative">
@@ -74,5 +74,5 @@ export const filterArticles = async (el, container) => {
     });
     el.classList.add("active");
     const list = await filterArticleList(el.dataset.filter);
-    buildCardList(list, container)
+    buildCardList(list, container);
 };
